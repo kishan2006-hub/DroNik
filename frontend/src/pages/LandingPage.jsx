@@ -69,8 +69,7 @@ function LandingPage() {
         setStatus('SUCCESS');
         fetchBookings(); // Refresh seats
         
-        const screenshotUrl = data.booking.screenshot ? `${API_BASE_URL}/${data.booking.screenshot.replace(/\\/g, '/')}` : 'No screenshot uploaded';
-        const message = `Hello! I want to book a slot for the FPV Drone Workshop.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*City:* ${formData.city}\n*State:* ${formData.state}\n*Slot:* ${selectedSlot}\n\n*Payment Screenshot:* ${screenshotUrl}`;
+        const message = `Hello! I want to book a slot for the FPV Drone Workshop.\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*City:* ${formData.city}\n*State:* ${formData.state}\n*Slot:* ${selectedSlot}\n\n*Payment Screenshot:* Uploaded (Verify on Dashboard)`;
         const whatsappUrl = `https://wa.me/917069722631?text=${encodeURIComponent(message)}`;
         
         setTimeout(() => {
