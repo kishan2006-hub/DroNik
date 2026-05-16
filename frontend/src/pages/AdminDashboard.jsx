@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import API_BASE_URL from '../config';
+import { API_BASE_URL, TOTAL_SEATS } from '../config';
 
 function AdminDashboard() {
   const [bookings, setBookings] = useState([]);
@@ -121,7 +121,7 @@ function AdminDashboard() {
         {slots.slice(1).map(s => (
           <div key={s} className="stat-card">
             <p className="stat-label">{s}</p>
-            <h2 className="stat-value">{bookings.filter(b => b.slot === s).length} / 20</h2>
+            <h2 className="stat-value">{bookings.filter(b => b.slot === s).length} / {TOTAL_SEATS}</h2>
           </div>
         ))}
       </div>

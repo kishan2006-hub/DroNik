@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import NikImage from '../assets/Nik_Image.jpeg';
 import NikScanner from '../assets/Nik_Scanner12.jpeg';
-import API_BASE_URL from '../config';
+import NikWorkshop from '../assets/Nik_Workshop.jpeg';
+import NikVideo from '../assets/Nik_Video.mp4';
+import { API_BASE_URL, TOTAL_SEATS } from '../config';
 
 function LandingPage() {
   const [showModal, setShowModal] = useState(false);
@@ -14,7 +16,6 @@ function LandingPage() {
   const [showQRInModal, setShowQRInModal] = useState(false);
   const [screenshot, setScreenshot] = useState(null);
 
-  const TOTAL_SEATS = 20;
 
   const slots = [
     { dates: '15–16 June' },
@@ -144,7 +145,7 @@ function LandingPage() {
       <section className="container">
         <h2 className="section-title">What You Get</h2>
         <div className="features-list">
-          {['Stay', 'Food', 'Pickup', 'Simulator', 'Flying', 'Shooting', 'Editing'].map(f => (
+          {['Stay', 'Food', 'Pickup', 'Simulator', 'Flying', 'Helipad Practice', 'Shooting', 'Editing'].map(f => (
             <span key={f} className="feature-tag">{f}</span>
           ))}
         </div>
@@ -167,6 +168,22 @@ function LandingPage() {
           <div className="price">₹10,000</div>
           <p>Book with ₹2,000 advance</p>
           <button className="btn" style={{ marginTop: '30px' }} onClick={() => setShowScanner(true)}>Secure Seat</button>
+        </div>
+      </section>
+
+      {/* PREVIOUS WORKSHOP */}
+      <section className="container workshop-section">
+        <h2 className="section-title">Previous Workshop</h2>
+        <div className="workshop-gallery">
+          <div className="gallery-item">
+            <img src={NikWorkshop} alt="Previous Workshop" className="gallery-img" />
+          </div>
+          <div className="gallery-item">
+            <video autoPlay muted loop playsInline controls className="gallery-video">
+              <source src={NikVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
         </div>
       </section>
 

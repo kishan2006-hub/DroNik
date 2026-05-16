@@ -49,21 +49,39 @@ h1, h2, h3 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: radial-gradient(circle at center, rgba(255, 106, 0, 0.15) 0%, transparent 70%);
+  background: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.8)), url('./assets/Nik_Logo.PNG');
+  background-size: cover;
+  background-position: center;
   position: relative;
 }
 
 .hero h1 {
   font-size: clamp(3rem, 8vw, 6rem);
   margin-bottom: 10px;
-  background: linear-gradient(to bottom, #fff 40%, var(--primary));
+  background: linear-gradient(
+    to right, 
+    #fff 20%, 
+    var(--primary) 40%, 
+    #fff 50%, 
+    var(--primary) 60%, 
+    #fff 80%
+  );
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .hero p {
   font-size: 1.2rem;
-  color: var(--text-muted);
+  /* color: var(--text-muted); */
+  color: #c7b9b9;
   margin-bottom: 30px;
   letter-spacing: 4px;
 }
@@ -104,7 +122,7 @@ h1, h2, h3 {
 .mid-image-container {
   display: flex;
   justify-content: center;
-  margin-top: -50px;
+  margin-top: -35px;
   margin-bottom: 50px;
   position: relative;
   z-index: 10;
@@ -532,3 +550,37 @@ section {
   .modal-content h2 { font-size: 1.5rem; }
 }
 
+/* Workshop Gallery */
+.workshop-section {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.workshop-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.gallery-item {
+  background: var(--bg-card);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+}
+
+.gallery-img, .gallery-video {
+  width: 100%;
+  display: block;
+}
+
+.gallery-video {
+  background: #000;
+}
