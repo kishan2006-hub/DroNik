@@ -181,7 +181,7 @@ function LandingPage() {
           <div className="gallery-item">
             <video autoPlay muted loop playsInline controls className="gallery-video">
               <source src={NikVideo} type="video/mp4" />
-              Your browser does not support the video tag.
+              Your browser do   es not support the video tag.
             </video>
           </div>
         </div>

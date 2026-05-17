@@ -4,6 +4,8 @@ const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
 require('dotenv').config();
 
 const app = express();
@@ -19,6 +21,11 @@ if (!fs.existsSync(uploadDir)) {
 app.use(cors()); // In production, you can restrict this to your frontend URL
 app.use(express.json());
 app.use('/uploads', express.static(uploadDir));
+
+// Health Check API
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Server is running' });
+});
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/fpv_workshop')
@@ -38,14 +45,20 @@ const bookingSchema = new mongoose.Schema({
 
 const Booking = mongoose.model('Booking', bookingSchema);
 
+// Cloudinary Configuration
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
 // Multer Storage Configuration
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/');
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'fpv_workshop',
+    allowedFormats: ['jpeg', 'png', 'jpg'],
   },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
 });
 
 const upload = multer({ storage: storage });
@@ -92,8 +105,8 @@ app.delete('/api/bookings/:id', async (req, res) => {
     const booking = await Booking.findByIdAndDelete(req.params.id);
     if (!booking) return res.status(404).json({ message: 'Booking not found' });
     
-    // Also delete the screenshot file if it exists
-    if (booking.screenshot) {
+    // Also delete the screenshot file if it exists locally (for older bookings)
+    if (booking.screenshot && !booking.screenshot.startsWith('http')) {
       const filePath = path.join(__dirname, booking.screenshot);
       if (fs.existsSync(filePath)) {
         fs.unlinkSync(filePath);

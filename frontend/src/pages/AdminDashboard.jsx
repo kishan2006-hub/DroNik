@@ -159,7 +159,7 @@ function AdminDashboard() {
                   <td data-label="Payment">
                     {b.screenshot ? (
                       <a 
-                        href={`${API_BASE_URL}/${b.screenshot.replace(/\\/g, '/')}`} 
+                        href={b.screenshot.startsWith('http') ? b.screenshot : `${API_BASE_URL}/${b.screenshot.replace(/\\/g, '/')}`} 
                         target="_blank" 
                         rel="noreferrer"
                         className="btn admin-view-btn"
