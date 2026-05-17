@@ -145,7 +145,7 @@ function LandingPage() {
       <section className="container">
         <h2 className="section-title">What You Get</h2>
         <div className="features-list">
-          {['Stay', 'Food', 'Pickup', 'Simulator', 'Flying', 'Helipad Practice', 'Shooting', 'DJI AVATA 360 EDIT'].map(f => (
+          {['Stay', 'Food', 'Pickup', 'Simulator', 'Flying', 'Helipad Practice', 'Shooting', 'DJI AVATA 360 EDITING'].map(f => (
             <span key={f} className="feature-tag">{f}</span>
           ))}
         </div>
