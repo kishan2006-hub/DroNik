@@ -97,7 +97,7 @@ function LandingPage() {
       <div className="hero">
         <div className="container">
           <h1>FPV DRONE WORKSHOP</h1>
-          <p>LEARN • FLY • SHOOT • DJI AVATA 360 EDITING</p>
+          <p>LEARN • FLY • SHOOT • DJI AVATA 360 EDIT</p>
           <a href="#slots" className="btn">BOOK YOUR SLOT</a>
         </div>
       </div>
