@@ -97,7 +97,7 @@ function LandingPage() {
       <div className="hero">
         <div className="container">
           <h1>FPV DRONE WORKSHOP</h1>
-          <p>LEARN • FLY • SHOOT • EDIT</p>
+          <p>LEARN • FLY • SHOOT • DJI AVATA 360 EDITING</p>
           <a href="#slots" className="btn">BOOK YOUR SLOT</a>
         </div>
       </div>
@@ -145,7 +145,7 @@ function LandingPage() {
       <section className="container">
         <h2 className="section-title">What You Get</h2>
         <div className="features-list">
-          {['Stay', 'Food', 'Pickup', 'Simulator', 'Flying', 'Helipad Practice', 'Shooting', 'Editing'].map(f => (
+          {['Stay', 'Food', 'Pickup', 'Simulator', 'Flying', 'Helipad Practice', 'Shooting', 'DJI AVATA 360 EDIT'].map(f => (
             <span key={f} className="feature-tag">{f}</span>
           ))}
         </div>
