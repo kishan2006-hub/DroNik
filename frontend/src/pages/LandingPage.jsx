@@ -74,7 +74,7 @@ function LandingPage() {
         const whatsappUrl = `https://wa.me/917069722631?text=${encodeURIComponent(message)}`;
         
         setTimeout(() => {
-          window.open(whatsappUrl, '_blank');
+          window.location.href = whatsappUrl;
           setShowModal(false);
           setStatus('');
           setFormData({ name: '', phone: '', state: '', city: '' });
